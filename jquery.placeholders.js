@@ -1,3 +1,6 @@
+/**
+ * https://github.com/ProtoGit/jquery.placeholders
+ */
 (function($) {
     $.fn.placeholders = function() {
 
