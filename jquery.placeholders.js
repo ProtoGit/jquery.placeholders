@@ -39,7 +39,11 @@
 
             if (!nativeSupport) {
                 form.on('submit', function() {
-                    form.find('.placeholder').val('');
+                    form.find('.placeholder').each(function () {
+                        if($(this).val() == $(this).attr('title')) {
+                            $(this).val('');
+                        }
+                    });
                 });
             }
 
