@@ -20,7 +20,7 @@
                     field.attr('placeholder', title).removeAttr('title');
                 } else {
                     if (field.val().length === 0) {
-                        field.addClass('placeholder').val(title).removeAttr('title');
+                        field.addClass('placeholder').val(title);
                     }
                     field.on('focus', function() {
                         if (field.val() === title) {
@@ -40,6 +40,16 @@
             if (!nativeSupport) {
                 form.on('submit', function() {
                     form.find('.placeholder').val('');
+                });
+
+                $(document).ajaxComplete(function() {
+                    form.find('input[title], textarea[title]').each(function() {
+                        var field = $(this);
+                        var title = field.attr('title');
+                        if (field.val().length === 0) {
+                            field.addClass('placeholder').val(title);
+                        }
+                    });
                 });
             }
 
